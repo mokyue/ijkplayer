@@ -12,28 +12,28 @@ cd config || exit
 rm -rf module.sh
 ln -s module-lite.sh module.sh
 
-cd ../android/contrib || exit
-sh compile-openssl.sh clean || exit
-sh compile-ffmpeg.sh clean || exit
-
-cd .. || exit
-sh compile-ijk.sh clean || exit
-
 cd .. || exit
 sh init-android.sh || exit
+sh init-android-exo.sh || exit
+sh init-android-j4a.sh || exit
+sh init-android-openssl.sh || exit
+sh init-android-prof.sh || exit
 
 cd android/contrib || exit
+sh compile-openssl.sh clean || exit
 for ARCH in $ACT_ARCHS_ALL
 do
     sh compile-openssl.sh "$ARCH" || exit
 done
 
+sh compile-ffmpeg.sh clean || exit
 for ARCH in $ACT_ARCHS_ALL
 do
     sh compile-ffmpeg.sh "$ARCH" || exit
 done
 
 cd .. || exit
+sh compile-ijk.sh clean || exit
 for ARCH in $ACT_ARCHS_ALL
 do
     sh compile-ijk.sh "$ARCH" || exit
