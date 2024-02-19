@@ -32,9 +32,11 @@ UNAME_S=$(uname -s)
 FF_MAKEFLAGS=
 if which nproc >/dev/null
 then
+#    FF_MAKEFLAGS=-j1
     FF_MAKEFLAGS=-j`nproc`
 elif [ "$UNAME_S" = "Darwin" ] && which sysctl >/dev/null
 then
+#    FF_MAKEFLAGS=-j1
     FF_MAKEFLAGS=-j`sysctl -n machdep.cpu.thread_count`
 fi
 

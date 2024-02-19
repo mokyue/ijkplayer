@@ -86,6 +86,7 @@ elif [ "$FF_ARCH" = "arm64" ]; then
     FF_SOURCE=$FF_BUILD_ROOT/$FF_BUILD_NAME
 
     FF_CMAKE_ABI="arm64-v8a"
+    FF_CMAKE_EXTRA_FLAGS="-DHAVE_WORDS_BIGENDIAN_EXITCODE=1"
 
 else
     echo "unknown architecture $FF_ARCH";
@@ -114,5 +115,6 @@ echo ""
 echo "--------------------"
 echo "[*] compile libsoxr"
 echo "--------------------"
+#make -j1
 make -j4
 make install

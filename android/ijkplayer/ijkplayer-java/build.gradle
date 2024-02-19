@@ -5,13 +5,9 @@ android {
     //noinspection GroovyAssignabilityCheck
     compileSdkVersion rootProject.ext.compileSdkVersion
     //noinspection GroovyAssignabilityCheck
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
-    lintOptions {
-        abortOnError false
-    }
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
     buildTypes {
@@ -19,11 +15,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            jniDebuggable true
+        }
+    }
+    namespace 'tv.danmaku.ijk.media.player'
+    lint {
+        abortOnError false
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 apply from: new File(rootProject.projectDir, "tools/gradle-on-demand.gradle");
