@@ -29,7 +29,7 @@ done
 sh compile-ffmpeg.sh clean || exit
 for ARCH in $ACT_ARCHS_ALL
 do
-    sh compile-ffmpeg.sh "$ARCH" || exit
+    sh compile-ffmpeg.sh "$ARCH" debug || exit
 done
 
 cd .. || exit

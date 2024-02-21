@@ -10,4 +10,4 @@ sh compile-openssl.sh clean || exit
 sh compile-ffmpeg.sh clean || exit
 
 sh compile-openssl.sh all || exit
-sh compile-ffmpeg.sh all || exit
+sh compile-ffmpeg.sh all debug || exit
